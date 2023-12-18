@@ -15,6 +15,12 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('data_plan.create')" :active="request()->routeIs('data_plan.create')">
+                        {{ __('Data Plans') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('user_data_mapping.create')" :active="request()->routeIs('user_data_mapping.create')">
+                        {{ __('Selected Plans') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -70,8 +76,11 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            <x-nav-link :href="route('data_plan.create')" :active="request()->routeIs('data_plan.create')">
+                {{ __('Data Plans') }}
+            </x-nav-link>
         </div>
-
+        
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
             <div class="px-4">

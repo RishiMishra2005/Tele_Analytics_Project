@@ -45,4 +45,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function dataPlans()
+    {
+        return $this->belongsToMany(DataPlan::class, 'user_data_mapping', 'user_id', 'data_plan_id')
+        ->withPivot(['subs_date']);;
+    }
 }
