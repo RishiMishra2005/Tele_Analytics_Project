@@ -54,9 +54,12 @@
                         <td>{{ $dataPlan->id }}</td>
                         <td>{{ $dataPlan->cost }}</td>
                         <td>{{ $dataPlan->description }}</td>
-                        <td><x-primary-button class="ms-4">
-                                {{ __('Select') }}
-                            </x-primary-button></td>
+                        <td>
+                            @if($dataPlan->is_active=='Yes')
+                                <x-primary-button class="ms-4">
+                                    {{ __('Select') }}
+                                </x-primary-button></td>
+                            @endif
                     </form>
                     </tr>
                 @endforeach

@@ -19,7 +19,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     public const HOME = '/dashboard';
     public const SELECTED_PLANS='/user_data_mapping/create';
-
+    public const DATA_MANAGEMENT='/user_data_mapping/dataManagement';
     /**
      * Define your route model bindings, pattern filters, and other route configuration.
      */

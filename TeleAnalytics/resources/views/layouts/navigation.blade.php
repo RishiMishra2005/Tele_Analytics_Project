@@ -15,12 +15,29 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('data_plan.create')" :active="request()->routeIs('data_plan.create')">
-                        {{ __('Data Plans') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('user_data_mapping.create')" :active="request()->routeIs('user_data_mapping.create')">
-                        {{ __('Selected Plans') }}
-                    </x-nav-link>
+
+
+                        @if(Auth::user()->role=="User")
+                            <x-nav-link :href="route('data_plan.create')" :active="request()->routeIs('data_plan.create')">
+                            {{ __('Data Plans') }}
+                            </x-nav-link>
+                            <x-nav-link :href="route('user_data_mapping.create')" :active="request()->routeIs('user_data_mapping.create')">
+                                {{ __('Selected Plans') }}
+                            </x-nav-link>
+                        @endif
+
+                        @if(Auth::user()->role=="Admin")
+                            <x-nav-link :href="route('user_data_mapping.stateAnalysis')" :active="request()->routeIs('user_data_mapping.stateAnalysis')">
+                            {{ __('State Analysis') }}
+                            </x-nav-link>
+                            <x-nav-link :href="route('user_data_mapping.yearAnalysis')" :active="request()->routeIs('user_data_mapping.yearAnalysis')">
+                                {{ __('Year Analysis') }}
+                            </x-nav-link> 
+                            <x-nav-link :href="route('user_data_mapping.dataManagement')" :active="request()->routeIs('user_data_mapping.dataManagement')">
+                            {{ __('Data Plan Management') }}
+                            </x-nav-link> 
+                        @endif
+                    
                 </div>
             </div>
 

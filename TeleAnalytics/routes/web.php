@@ -29,7 +29,7 @@ Route::resource('data_plan',DataPlanController::class)
     ->middleware(['auth','verified']);
 
 Route::resource('user_data_mapping',UserDataMappingController::class)
-    ->only(['create','store'])
+    ->only(['dataManagement','create','store','stateAnalysis','yearAnalysis','update','delete'])
     ->middleware(['auth','verified']);
 
 Route::middleware('auth')->group(function () {
@@ -37,6 +37,11 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::post('/storePlan', [UserDataMappingController::class, 'store'])->name('user_data_mapping.store');
+    Route::get('/state-analysis', [UserDataMappingController::class, 'stateAnalysis'])->name('user_data_mapping.stateAnalysis');
+    Route::get('/year-analysis', [UserDataMappingController::class, 'yearAnalysis'])->name('user_data_mapping.yearAnalysis');
+    Route::get('/datamanagement', [UserDataMappingController::class, 'dataManagement'])->name('user_data_mapping.dataManagement');
+    Route::post('/update', [UserDataMappingController::class, 'update'])->name('user_data_mapping.update');
+    Route::post('/saveDataPlan', [UserDataMappingController::class, 'saveDataPlan'])->name('user_data_mapping.saveDataPlan');
 });
 
 require __DIR__.'/auth.php';
