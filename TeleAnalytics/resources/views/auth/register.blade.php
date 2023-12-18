@@ -16,6 +16,23 @@
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
+        <!-- Date -->
+        <div class="mt-4">
+            <x-input-label for="date_of_birth" :value="__('Date Of Birth')" />
+            <x-text-input id="date_of_birth" class="block mt-1 w-full" type="date" name="date_of_birth" :value="old('date_of_birth')" required />
+            <x-input-error :messages="$errors->get('date_of_birth')" class="mt-2" />
+        </div>
+
+        <!-- State -->
+        <div class="mt-4">
+            <x-input-label for="state" :value="__('State')" />
+            <select id="state" class="block z-50 mt-1  rounded-md w-full" style="border-color: gray;" name="state" :value="old('state')" required>
+                <option value="Maharashtra">Maharashtra</option>
+                <option value="Gujrat">Gujrat</option>
+                <option value="West Bengal">West Bengal</option>
+            </select>
+            <x-input-error :messages="$errors->get('state')" class="mt-2" />
+        </div>
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Password')" />
