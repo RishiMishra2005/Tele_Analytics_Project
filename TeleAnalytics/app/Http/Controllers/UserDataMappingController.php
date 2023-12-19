@@ -52,7 +52,8 @@ class UserDataMappingController extends Controller
             $value = $request->input('state');
             $data = DB::select('select u.state state,count(distinct u.id) totalCustomers,sum(dp.cost) revenue from users u,data_plan dp,user_data_mapping udm 
             where u.id=udm.user_id and dp.id=udm.data_plan_id and u.state=? group by u.state',[$value]);
-            $data2 = DB::select('SELECT u.state,CONCAT(CAST(udm.data_plan_id AS VARCHAR(255)), \' - \', dp.description) AS dpDet,COUNT(udm.data_plan_id) AS up FROM users u, data_plan dp, user_data_mapping udm GROUP BY u.state, dpDet');
+            $data2 = DB::select('select u.state,CONCAT(CAST(udm.data_plan_id AS VARCHAR(255)), \' - \',dp.description) dpDet,count(udm.data_plan_id) up from users u,data_plan dp,user_data_mapping udm 
+            where u.id=udm.user_id and dp.id=udm.data_plan_id and u.state=? group by u.state,udm.data_plan_id,dp.description order by up desc LIMIT 1;',[$value]);
             if(count($data)>0){
                 $result=[
                     'totalCustomer'=>$data[0]->totalCustomers,
